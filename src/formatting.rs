@@ -22,7 +22,7 @@ pub struct DocumentOnTypeFormattingOptions {
     pub more_trigger_character: Option<Vec<String>>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct DocumentFormattingParams {
@@ -37,7 +37,7 @@ pub struct DocumentFormattingParams {
 }
 
 /// Value-object describing what options formatting should use.
-#[derive(Debug, PartialEq, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct FormattingOptions {
@@ -64,7 +64,7 @@ pub struct FormattingOptions {
     pub trim_final_newlines: Option<bool>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub enum FormattingProperty {
@@ -73,7 +73,7 @@ pub enum FormattingProperty {
     String(String),
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct DocumentRangeFormattingParams {
@@ -90,7 +90,7 @@ pub struct DocumentRangeFormattingParams {
     pub work_done_progress_params: WorkDoneProgressParams,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct DocumentOnTypeFormattingParams {

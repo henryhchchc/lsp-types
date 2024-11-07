@@ -47,7 +47,7 @@ pub struct CallHierarchyPrepareParams {
     pub work_done_progress_params: WorkDoneProgressParams,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CallHierarchyItem {
@@ -80,7 +80,7 @@ pub struct CallHierarchyItem {
     pub data: Option<Value>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CallHierarchyIncomingCallsParams {
@@ -94,7 +94,7 @@ pub struct CallHierarchyIncomingCallsParams {
 }
 
 /// Represents an incoming call, e.g. a caller of a method or constructor.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CallHierarchyIncomingCall {
@@ -106,7 +106,7 @@ pub struct CallHierarchyIncomingCall {
     pub from_ranges: Vec<Range>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CallHierarchyOutgoingCallsParams {

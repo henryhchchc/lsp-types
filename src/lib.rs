@@ -507,7 +507,7 @@ impl DiagnosticTag {
 /// their execution on the server side if the client and server provides the corresponding capabilities.
 /// Alternatively the tool extension code could handle the command.
 /// The protocol currently doesn’t specify a set of well-known commands.
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct Command {
     /// Title of the command, like `save`.
@@ -983,7 +983,7 @@ pub type DocumentSelector = Vec<DocumentFilter>;
 
 // ========================= Actual Protocol =========================
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize, Default)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, Default)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct InitializeParams {
@@ -1045,7 +1045,7 @@ pub struct InitializeParams {
     pub work_done_progress_params: WorkDoneProgressParams,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ClientInfo {
     /// The name of the client as defined by the client.
@@ -1055,7 +1055,7 @@ pub struct ClientInfo {
     pub version: Option<String>,
 }
 
-#[derive(Debug, PartialEq, Clone, Copy, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct InitializedParams {}
 
@@ -1536,7 +1536,7 @@ pub struct TextDocumentClientCapabilities {
 }
 
 /// Where ClientCapabilities are currently empty:
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ClientCapabilities {
@@ -1574,7 +1574,7 @@ pub struct ClientCapabilities {
     pub experimental: Option<Value>,
 }
 
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct GeneralClientCapabilities {
@@ -1625,7 +1625,7 @@ pub struct GeneralClientCapabilities {
 /// anymore since the information is outdated).
 ///
 /// @since 3.17.0
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct StaleRequestSupportClientCapabilities {
@@ -1638,7 +1638,7 @@ pub struct StaleRequestSupportClientCapabilities {
     pub retry_on_content_modified: Vec<String>,
 }
 
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct RegularExpressionsClientCapabilities {
@@ -1650,7 +1650,7 @@ pub struct RegularExpressionsClientCapabilities {
     pub version: Option<String>,
 }
 
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct MarkdownClientCapabilities {
@@ -2047,7 +2047,7 @@ pub struct WorkspaceServerCapabilities {
 }
 
 /// General parameters to to register for a capability.
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct Registration {
@@ -2063,7 +2063,7 @@ pub struct Registration {
     pub register_options: Option<Value>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct RegistrationParams {
     pub registrations: Vec<Registration>,
@@ -2227,7 +2227,7 @@ pub struct UnregistrationParams {
     pub unregisterations: Vec<Unregistration>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct DidChangeConfigurationParams {
     /// The actual changed settings
@@ -2645,7 +2645,7 @@ impl From<Vec<LocationLink>> for GotoDefinitionResponse {
     }
 }
 
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ExecuteCommandParams {
     /// The identifier of the actual command handler.

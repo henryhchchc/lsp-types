@@ -37,7 +37,7 @@ pub struct CodeLensParams {
 ///
 /// A code lens is _unresolved_ when no command is associated to it. For performance
 /// reasons the creation of a code lens and resolving should be done in two stages.
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CodeLens {

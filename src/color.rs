@@ -97,7 +97,9 @@ impl std::hash::Hash for Color {
     }
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+impl Eq for Color {}
+
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ColorPresentationParams {

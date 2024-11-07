@@ -375,7 +375,7 @@ impl From<CompletionList> for CompletionResponse {
     }
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CompletionParams {
@@ -394,7 +394,7 @@ pub struct CompletionParams {
     pub context: Option<CompletionContext>,
 }
 
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CompletionContext {
@@ -434,7 +434,7 @@ pub struct CompletionList {
     pub items: Vec<CompletionItem>,
 }
 
-#[derive(Debug, PartialEq, Default, Deserialize, Serialize, Clone)]
+#[derive(Debug, PartialEq, Eq, Default, Deserialize, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CompletionItem {
@@ -576,7 +576,7 @@ impl CompletionItem {
 /// Additional details for a completion item label.
 ///
 /// @since 3.17.0
-#[derive(Debug, PartialEq, Default, Deserialize, Serialize, Clone)]
+#[derive(Debug, PartialEq, Eq, Default, Deserialize, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct CompletionItemLabelDetails {

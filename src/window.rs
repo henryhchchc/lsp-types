@@ -22,7 +22,7 @@ impl MessageType {
 }
 
 /// Window specific client capabilities.
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct WindowClientCapabilities {
@@ -48,7 +48,7 @@ pub struct WindowClientCapabilities {
 }
 
 /// Show message request client capabilities
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ShowMessageRequestClientCapabilities {
@@ -57,7 +57,7 @@ pub struct ShowMessageRequestClientCapabilities {
     pub message_action_item: Option<MessageActionItemCapabilities>,
 }
 
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct MessageActionItemCapabilities {
@@ -130,7 +130,7 @@ pub struct ShowMessageRequestParams {
 }
 
 /// Client capabilities for the show document request.
-#[derive(Debug, PartialEq, Clone, Default, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ShowDocumentClientCapabilities {
@@ -141,7 +141,7 @@ pub struct ShowDocumentClientCapabilities {
 /// Params to show a document.
 ///
 /// @since 3.16.0
-#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 #[cfg_attr(feature = "hash", derive(Hash))]
 pub struct ShowDocumentParams {
