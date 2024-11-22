@@ -1,4 +1,4 @@
-use std::{hash::Hash, ops::Deref, str::FromStr};
+use std::{hash::Hash, ops::{Deref, DerefMut}, str::FromStr};
 
 use serde::{de::Error, Deserialize, Serialize};
 
@@ -58,6 +58,12 @@ impl Deref for Uri {
 
     fn deref(&self) -> &Self::Target {
         &self.0
+    }
+}
+
+impl DerefMut for Uri {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
 
