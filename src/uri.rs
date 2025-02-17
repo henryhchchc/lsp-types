@@ -1,9 +1,13 @@
-use std::{hash::Hash, ops::{Deref, DerefMut}, str::FromStr};
+use std::{
+    hash::Hash,
+    ops::{Deref, DerefMut},
+    str::FromStr,
+};
 
 use serde::{de::Error, Deserialize, Serialize};
 
 /// Newtype struct around `fluent_uri::Uri<String>` with serialization implementations that use `as_str()` and 'from_str()' respectively.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Uri(fluent_uri::Uri<String>);
 
 impl From<fluent_uri::Uri<String>> for Uri {
@@ -33,18 +37,6 @@ impl<'de> Deserialize<'de> for Uri {
     }
 }
 
-impl Ord for Uri {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        self.as_str().cmp(other.as_str())
-    }
-}
-
-impl PartialOrd for Uri {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        Some(self.cmp(other))
-    }
-}
-
 impl FromStr for Uri {
     type Err = fluent_uri::error::ParseError;
 
@@ -64,24 +56,5 @@ impl Deref for Uri {
 impl DerefMut for Uri {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
-    }
-}
-
-/*
-    TOUCH-UP: `PartialEq`, `Eq` and `Hash` could all be derived
-    if and when the respective implementations get merged upstream:
-    https://github.com/yescallop/fluent-uri-rs/pull/9
-*/
-impl PartialEq for Uri {
-    fn eq(&self, other: &Self) -> bool {
-        self.as_str() == other.as_str()
-    }
-}
-
-impl Eq for Uri {}
-
-impl Hash for Uri {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        self.as_str().hash(state)
     }
 }
