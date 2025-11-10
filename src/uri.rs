@@ -33,12 +33,12 @@ impl<'de> Deserialize<'de> for Uri {
         let string = String::deserialize(deserializer)?;
         fluent_uri::Uri::<String>::parse(string)
             .map(Uri)
-            .map_err(|error| Error::custom(error.to_string()))
+            .map_err(|(_error, msg)| Error::custom(msg))
     }
 }
 
 impl FromStr for Uri {
-    type Err = fluent_uri::error::ParseError;
+    type Err = fluent_uri::ParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         fluent_uri::Uri::from_str(s).map(|uri| uri.into())
